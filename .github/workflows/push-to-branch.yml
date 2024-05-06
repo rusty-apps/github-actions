@@ -1,0 +1,18 @@
+name: 'Push to branch'
+
+on:
+  push:
+    branches-ignore:
+      - main
+permissions: {}
+
+jobs:
+  secrets-scan:
+    name: pre-commit
+    runs-on: ubuntu-latest
+    concurrency:
+      group: secrets-scan-${{ github.head_ref || github.ref_name }}
+      cancel-in-progress: true
+    steps:
+      - name: Run secrets scan
+        uses: rusty-apps/github-actions/security/secrets-scan@685311cb5a1b532872369c9f996e7a7a9a235f58
