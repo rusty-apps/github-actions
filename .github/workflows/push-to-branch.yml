@@ -8,11 +8,11 @@ permissions: {}
 
 jobs:
   secrets-scan:
-    name: pre-commit
+    name: secrets-scan
     runs-on: ubuntu-latest
     concurrency:
       group: secrets-scan-${{ github.head_ref || github.ref_name }}
       cancel-in-progress: true
     steps:
       - name: Run secrets scan
-        uses: rusty-apps/github-actions/security/secrets-scan@685311cb5a1b532872369c9f996e7a7a9a235f58
+        uses: rusty-apps/github-actions/security/secrets-scan@c88aef61780b52030f39eb6d73fd44edd5ad0c8a
