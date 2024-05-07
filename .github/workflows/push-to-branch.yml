@@ -6,13 +6,14 @@ on:
       - main
 permissions: {}
 
+concurrency:
+  group: push-to-branch-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   secrets-scan:
     name: secrets-scan
     runs-on: ubuntu-latest
-    concurrency:
-      group: secrets-scan-${{ github.head_ref || github.ref_name }}
-      cancel-in-progress: true
     steps:
       - name: Run secrets scan
-        uses: rusty-apps/github-actions/security/secrets-scan@c082df0c26c2de2427c80c8326168185f66c0e9c
+        uses: ./security/secrets-scan
