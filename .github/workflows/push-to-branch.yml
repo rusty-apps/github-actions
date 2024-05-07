@@ -15,4 +15,4 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: Run secrets scan
-        uses: rusty-apps/github-actions/security/secrets-scan@c88aef61780b52030f39eb6d73fd44edd5ad0c8a
+        uses: rusty-apps/github-actions/security/secrets-scan@c082df0c26c2de2427c80c8326168185f66c0e9c
